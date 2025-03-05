@@ -17,6 +17,11 @@
     padding: 10px;
     margin: 10px;
 }
+.nav-items ul button{
+    font-size: 24px;
+    padding: 10px;
+    margin: 10px;
+}
 .searchbar-container{
     height: 50px;
     align-items: center;
@@ -80,12 +85,41 @@
     height: 50px;
     margin: 20px;
     margin-left: 0px;
+    display: flex;
+    gap: 30px;
 }
-.filter-container button{
-    height: 50px;
+.filter-btn{
+    height: 40px;
     cursor: pointer;
     border-radius: 7px;
+    margin-left: 50px;
 }
 .filter-container button:hover{
     background-color: bisque;
+}
+.shimmer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+.shimmer-card{
+    height: 320px;
+    width: 260px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+}
+.search-container{
+    width:200px;
+    gap: 10px;
+    display: flex;
+}
+.search-container input{
+    height: 30px;
+    border-radius: 5px;
+}
+.search-container button{
+    height: 40px;
+    cursor: pointer;
+    border-radius: 7px;
 }
