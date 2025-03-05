@@ -1,26 +1,3 @@
-/**
- * Header
- *  - Logo
- *  - Nav items
- * Body
- *  - Search bar
- *  - RestaurantCardContainer
- *      - RestaurantCard
- *          - image
- *          - name of restaurant
- *          - Rating, time to deliver, price
- *          - place
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- * 
- */
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./App.css"
-
 let restaurants = [
     {
       "info": {
@@ -1636,64 +1613,5 @@ let restaurants = [
       }
     }
   ];
-// fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.01020&lng=76.97010&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-// .then((response)=>response.json())
-// .then((data)=>{
-//     console.log(data)
-//     restaurants = data.data.cards.filter((item)=>item.card.card.id=="top_brands_for_you")[0].card.card.gridElements.infoWithStyle.restaurants
-//     console.log(restaurants);
-// })
 
-const HeaderComponent = ()=>{
-    return (<div className="header">
-        <div className="logo-container">
-            <img className="logo" src="https://png.pngtree.com/png-clipart/20220604/original/pngtree-restaurant-logo-png-image_7932128.png"/>
-        </div>
-        <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Cart</li>
-            </ul>
-        </div>
-    </div>)
-}
-
-const RestaurantCard = (obj)=>{
-    props=obj.props
-    return (
-        <div className="restaurant-card">
-            <div className="hotel-image">
-                <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+props.cloudinaryImageId} />
-            </div>
-            <h3>{props.name}</h3>
-            <div className="rating-container">
-                <img src="https://w7.pngwing.com/pngs/689/388/png-transparent-star-favorite-rating-award-like-feedback-3d-icon.png"/>
-                <span>{props.avgRating}</span>
-                <span>{props.sla?props.sla.slaString:""}</span>
-            </div>
-            <div className="cuisine">{props.cuisines?props.cuisines.join(','):""}</div>
-            <div className="place">{props.areaName}</div>
-        </div>
-    )
-}
-const BodyComponent = ()=>{
-    return (
-    <div className="body">
-        <div className="searchbar-container">I am searchbar</div>
-        <div className="restaurant-card-container">
-            {restaurants.map((rest)=> <RestaurantCard key={rest.info.id} props={rest.info}/> )}
-        </div>
-    </div>
-);}
-
-const AppLayout = ()=>{
-    return (
-    <div className="applayout">
-            <HeaderComponent/>
-            <BodyComponent/>
-        </div>
-    );}
-const app = ReactDOM.createRoot(document.getElementById("root"));
-app.render(<AppLayout/>)
+  export default restaurants;

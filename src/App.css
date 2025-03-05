@@ -76,3 +76,16 @@
     text-align: center;
     font-size:medium;
 }
+.filter-container{
+    height: 50px;
+    margin: 20px;
+    margin-left: 0px;
+}
+.filter-container button{
+    height: 50px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.filter-container button:hover{
+    background-color: bisque;
+}
