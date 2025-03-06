@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 //import restaurants from "../utils/mockData";
 import { useState , useEffect} from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const BodyComponent =  ()=>{
     let [resData,setResData] = useState([]);
@@ -13,7 +14,6 @@ const BodyComponent =  ()=>{
         const respJson = await resp.json();
         //optional chaining if there is no data, instaed of error it will return undefined
         restaurants = respJson?.data?.cards?.filter((item)=>item?.card?.card?.id=="top_brands_for_you")[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        console.log(restaurants)
         setResData(restaurants);
         setFilteredResData(restaurants);
     }
@@ -47,7 +47,7 @@ const BodyComponent =  ()=>{
             <button className="filter-btn" onClick={topRatedFilter}>Top Rated Restaurants</button>
         </div>
         <div className="restaurant-card-container">
-            {filteredResData.map((rest)=> <RestaurantCard key={rest.info.id} props={rest.info}/> )}
+            {filteredResData.map((rest)=> <Link key={rest.info.id} to={'restaurants/'+rest.info.id}><RestaurantCard  props={rest.info}/></Link> )}
         </div>
     </div>
 );}
