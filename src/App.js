@@ -4,12 +4,14 @@ import ReactDOM from "react-dom/client";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
-import About from "./components/About";
+//import About from "./components/About";  --> we will import this using lazy loading
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import { createBrowserRouter,RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { lazy,Suspense } from "react";
 
+const About =  lazy(()=>import("./components/About"));
 const AppLayout = ()=>{
     return (
     <div className="applayout">
@@ -29,7 +31,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About/>
+        element: <Suspense fallback={<div>Loading....</div>}><About/></Suspense>
       },
       {
         path: '/contact',
