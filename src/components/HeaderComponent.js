@@ -17,6 +17,7 @@ const HeaderComponent = ()=>{
       <nav className="space-x-6 hidden md:flex">
         <Link to="/" className="text-gray-700 hover:text-gray-900" onClick={()=>{
             setNewFilterData(allData)
+            
         }}>Home</Link>
         <Link to="/about" className="text-gray-700 hover:text-gray-900">About</Link>
         <Link to="/contact" className="text-gray-700 hover:text-gray-900">Contact</Link>

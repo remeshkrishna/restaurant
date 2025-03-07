@@ -17,14 +17,14 @@ const About =  lazy(()=>import("./components/About"));
 
 const AppLayout = ()=>{
   const [newFilterData,setNewFilterData] = useState([])
-
+  const [allData,setAllData] = useState([])
     return (
     <div className="applayout">
-        <RestContext.Provider value={{allData:[],filterData: newFilterData,setNewFilterData}}>
-
+        <RestContext.Provider value={{allData:allData,filterData: newFilterData,setNewFilterData,setAllData}}>
+          <HeaderComponent/>
+          <Outlet/>
         </RestContext.Provider>
-            <HeaderComponent/>
-            <Outlet/>
+            
         </div>
     );}
 

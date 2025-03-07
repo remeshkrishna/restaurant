@@ -6,10 +6,10 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import RestContext from "../utils/restContext";
 const BodyComponent =  ()=>{
-    let {allData, filterData} = useContext(RestContext);
+    let {allData, filterData, setAllData, setNewFilterData} = useContext(RestContext);
+    let resData = allData
+    let filteredResData = filterData
 
-    let [resData,setResData] = useState(allData);
-    let [filteredResData,setFilteredResData] = useState(filterData);
     const [searchQuery,setSearchQuery] = useState("");
     
     const fetchData = async ()=>{
@@ -17,20 +17,24 @@ const BodyComponent =  ()=>{
         const respJson = await resp.json();
         //optional chaining if there is no data, instaed of error it will return undefined
         restaurants = respJson?.data?.cards?.filter((item)=>item?.card?.card?.id=="top_brands_for_you")[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        setResData(restaurants);
-        setFilteredResData(restaurants);
+        //setResData(restaurants);
+        setNewFilterData(restaurants);
+        setAllData(restaurants)
     }
     useEffect(()=>{
-        fetchData();
+        if(allData.length===0){
+            fetchData();
+        }
+        
     },[])
 
     let topRatedFilter = ()=>{
         let filtered = resData.filter((item)=>item.info.avgRating>4.5);
-        setFilteredResData(filtered);
+        setNewFilterData(filtered);
         }
     const searchHandler = ()=>{
         let filtered = resData?.filter((item)=>item.info.name.toLowerCase().includes(searchQuery.toLowerCase()))
-        setFilteredResData(filtered)
+        setNewFilterData(filtered)
         }
 
     //conditional rendering
