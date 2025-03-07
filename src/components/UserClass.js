@@ -9,9 +9,9 @@ class UserClass extends React.Component {
         console.log("UserClass "+this.props.name +" constructor called")
     }
     componentDidMount(){
-        setInterval(()=>{
-            console.log("interval set")
-        },1000)
+        // setInterval(()=>{
+        //     console.log("interval set")
+        // },1000)
     }
     componentDidUpdate(){
         console.log("componentDidUpdate called in "+this.props.name+" with state value: "+this.state.count)

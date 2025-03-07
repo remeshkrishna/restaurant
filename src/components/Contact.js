@@ -6,4 +6,16 @@ const Contact =()=>{
     )
 }
 
+export const NewContact = (Contact)=>{
+    return (props)=>{
+        return (
+            <div>
+                <label>{props.label}</label>
+                <Contact/>
+            </div>
+
+        )
+    }
+}
+
 export default Contact;

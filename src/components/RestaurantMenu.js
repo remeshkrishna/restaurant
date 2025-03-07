@@ -3,9 +3,14 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "./useRestaurantMenu";
 import useOnlineStatus from "./useOnlineStatus";
 
+import { useState } from "react";
+import CategoryItem from "./CategoryItem";
+
 const RestaurantMenu = ()=>{
     const {resId} = useParams()
     const resInfo = useRestaurantMenu(resId);
+    const [clickIndex,setClickIndex] = useState(null)
+    
     
     const onlineStatus = useOnlineStatus();
     if(!onlineStatus){
@@ -15,12 +20,29 @@ const RestaurantMenu = ()=>{
     if(resInfo.length === 0 ){
         return <Shimmer/>
     }
+    let items = resInfo[4]?.groupedCard.cardGroupMap.REGULAR.cards.filter((item)=>item?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    console.log(items)
+
+    
+
     return (
-        <div>
-            <h1>{resInfo[2].card.card.info.name}</h1>
-            <h2>Menu</h2>
-            <ul>
-                {resInfo[4]?.groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map((item)=><li key={item.card.info.id}>{item.card.info.name+' - '+item.card.info.price}</li>)}
+        <div className="text-center">
+            <h1 className="font-bold text-3xl mt-4">{resInfo[2].card.card.info.name}</h1>
+            
+            <ul className="mt-4">
+                {items.map((it,index)=><CategoryItem 
+                    key={it.card.card.categoryId}
+                    item={it} 
+                    setClickIndex={()=>{
+                        if(clickIndex!=index){
+                            return setClickIndex(index)
+                        }
+                        else{
+                            return setClickIndex(null)
+                        }
+                    }}
+                    showCard = {clickIndex===index?true:false}
+                    />)}
             </ul>
         </div>
     )
