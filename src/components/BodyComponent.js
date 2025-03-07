@@ -1,13 +1,15 @@
 import restaurants from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 //import restaurants from "../utils/mockData";
-import { useState , useEffect} from "react";
+import { useState , useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import RestContext from "../utils/restContext";
 const BodyComponent =  ()=>{
-    let [resData,setResData] = useState([]);
-    let [filteredResData,setFilteredResData] = useState([]);
+    let {allData, filterData} = useContext(RestContext);
+
+    let [resData,setResData] = useState(allData);
+    let [filteredResData,setFilteredResData] = useState(filterData);
     const [searchQuery,setSearchQuery] = useState("");
     
     const fetchData = async ()=>{
@@ -57,7 +59,7 @@ const BodyComponent =  ()=>{
             
         </div>
         <div className="flex flex-wrap  gap-4">
-            {filteredResData.map((rest)=> <Link className="ml-4" key={rest.info.id} to={'restaurants/'+rest.info.id}><RestaurantCard  props={rest.info}/></Link> )}
+            {filteredResData.map((rest)=> <Link className="ml-4" key={rest.info.id} to={'restaurants/'+rest.info.id}><RestaurantCard  props={rest.info} /></Link> )}
         </div>
     </div>
 );}

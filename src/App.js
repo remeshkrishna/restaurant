@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import HeaderComponent from "./components/HeaderComponent";
@@ -10,11 +10,19 @@ import Contact, { NewContact } from "./components/Contact";
 import { createBrowserRouter,RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy,Suspense } from "react";
+import RestContext from "./utils/restContext";
+import { useState } from "react";
 
 const About =  lazy(()=>import("./components/About"));
+
 const AppLayout = ()=>{
+  const [newFilterData,setNewFilterData] = useState([])
+
     return (
     <div className="applayout">
+        <RestContext.Provider value={{allData:[],filterData: newFilterData,setNewFilterData}}>
+
+        </RestContext.Provider>
             <HeaderComponent/>
             <Outlet/>
         </div>
