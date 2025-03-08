@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "./useOnlineStatus";
 import RestContext from "../utils/restContext";
 
+
 const HeaderComponent = ()=>{
     let [loginState,setLoginState] =useState(false)
     let {allData,setNewFilterData} = useContext(RestContext);
@@ -21,6 +22,7 @@ const HeaderComponent = ()=>{
         }}>Home</Link>
         <Link to="/about" className="text-gray-700 hover:text-gray-900">About</Link>
         <Link to="/contact" className="text-gray-700 hover:text-gray-900">Contact</Link>
+        <Link to="/cart" className="text-gray-700 hover:text-gray-900">Cart</Link>
       </nav>
 
       {/* Login Button */}

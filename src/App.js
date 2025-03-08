@@ -12,6 +12,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy,Suspense } from "react";
 import RestContext from "./utils/restContext";
 import { useState } from "react";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 const About =  lazy(()=>import("./components/About"));
 
@@ -20,10 +23,13 @@ const AppLayout = ()=>{
   const [allData,setAllData] = useState([])
     return (
     <div className="applayout">
+      <Provider store={appStore}>
         <RestContext.Provider value={{allData:allData,filterData: newFilterData,setNewFilterData,setAllData}}>
           <HeaderComponent/>
           <Outlet/>
         </RestContext.Provider>
+      </Provider>
+        
             
         </div>
     );}
@@ -50,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurants/:resId',
         element: <RestaurantMenu/>
+      },
+      {
+        path: '/cart',
+        element: <Cart/>
       }
     ],
     errorElement: <Error/>

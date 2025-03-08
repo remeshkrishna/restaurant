@@ -1,14 +1,18 @@
 import { IMG_URL } from "../utils/constants";
 import { useState } from "react";
+import { addItem} from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const CategoryItem = ({item, setClickIndex , showCard})=>{
-
-    
+    let dispatch =useDispatch();
 
     const handleClick =()=>{
         setClickIndex()
     }
     
+    const addToCart = (item)=>{
+        dispatch(addItem(item))
+    }
 
      return (
         <li className="bg-gray-100 w-6/12 mx-auto my-2  rounded-xl" key={item.card.card.categoryId}>
@@ -30,8 +34,11 @@ const CategoryItem = ({item, setClickIndex , showCard})=>{
                                     </div>
                                     <div className="relative w-40 h-32 p-2">
                                         <img className="w-full h-full object-cover rounded-2xl" src={IMG_URL + food.card.info.imageId} alt={food.card.info.name} />
-                                        <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition">
-                                        Add
+                                        <button 
+                                        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition"
+                                        onClick={()=>addToCart(food)}
+                                        >
+                                        Add +
                                         </button>
                                     </div>
                                 </div>
