@@ -1,23 +1,21 @@
-# restaurant
-A restaurant app using react-js
+Home Page
+==========================
+![alt text](image.png)
 
-# page structure
-/**
- * Header
- *  - Logo
- *  - Nav items
- * Body
- *  - Search bar
- *  - RestaurantCardContainer
- *      - RestaurantCard
- *          - image
- *          - name of restaurant
- *          - Rating, time to deliver, price
- *          - place
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- * 
- */
+Searching
+========================
+![alt text](image-1.png)
+
+Top Rated
+=========================
+![alt text](image-2.png)
+
+Restaurant Menu
+=========================
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+Cart
+======================
+![alt text](image-5.png)

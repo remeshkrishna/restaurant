@@ -14,7 +14,7 @@ const Cart = ()=>{
     return(
         <div className="w-6/12 mx-auto place-items-center">
             <h1 className="font-bold text-4xl mt-6 mb-6 text-center">Cart</h1>
-            <ul className="bg-white shadow-2xl rounded-b-sm">{cartItems.map((food,index)=>{                  
+            <ul className="w-[80%] bg-white shadow-2xl rounded-b-sm">{cartItems.map((food,index)=>{                  
             return <li className="mt-2 mb-2 border-b-gray-300 border-b-1" key={food.card.info.id +index}>
                         <div className="flex justify-between gap-3 mr-2 items-center">
                             <div className="flex flex-col text-left ml-6 gap-2 w-2/3">
